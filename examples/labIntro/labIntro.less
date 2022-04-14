@@ -1,0 +1,99 @@
+@import "shadow";
+@import "global";
+@gap1: 4px;
+
+.projectWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    padding-left: @gap4;
+    padding-left: 0;
+    justify-content: center;
+    .projectItem {
+        margin: 0 @gap2 @gap4 @gap2;
+        width: 300px - @gap4;
+        // box-sizing: border-box;
+        .z-depth-2;
+        list-style: none;
+        transition: 300ms;
+        &:hover {
+            .z-depth-5;
+        }
+        a {
+            width: 100%;
+            height: 100%;
+            padding: @gap4;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: black;
+            .piImage {
+                padding-bottom: 100%;
+                margin-bottom: @gap4;
+                background-color: @bgGray;
+                background-image: url();
+                background-size: cover;
+                border: 1px solid @bgGray;
+                position: relative;
+                i {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    font-size: 200px;
+                    color: darken(@bgGray, 20%);
+                }
+            }
+            .piInfro {
+                display: flex;
+                flex-direction: column;
+                .piTitle {
+                    text-align: center;
+                }
+                .piStackWrapper {
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: @gap4;
+                    .piStackItem {
+                        border: 1px solid grey;
+                        border-radius: @gap1;
+                        padding: 0 @gap1;
+                        margin-right: @gap1;
+                    }
+                }
+                .piDesc {
+                    word-break: break-all;
+                    height: 2.5em;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                }
+            }
+        }
+    }
+}
+
+.piImage::before {
+    content: "";
+    display: block;
+    height: 100%;
+    width: @gap2;
+    position: absolute;
+    top: 0;
+    .typeBlog & {
+        background: hsl(0, 50%, 70%);
+    }
+    .typeJs & {
+        background: hsl(200, 50%, 70%);
+    }
+    .typeOther & {
+        background: hsl(270, 50%, 70%);
+    }
+}
+
+// .piTitle::after {
+//     right: 0;
+// }

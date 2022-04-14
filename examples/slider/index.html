@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Slider</title>
+  <!-- <script src="https://cdn.bootcss.com/markdown.js/0.5.0/markdown.min.js"></script> -->
+  <script src="https://cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
+  <link href="https://cdn.bootcss.com/highlight.js/9.10.0/styles/github.min.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/less.min.js"></script> 
+  <link rel="stylesheet" href="pageBlade/demoPage.css">
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/lodash.js/4.17.4/lodash.min.js"></script>
+  <script src="pageBlade/demoPage.js"></script> 
+  <link rel="stylesheet" href="slider.css">
+  <script src="slider.js"></script> 
+  <link rel="stylesheet" href="use.css">
+  <script src="use.js"></script> 
+</head>
+
+<body>
+  <div class="mainWrapper">
+    <div class="headerWrapper">
+      <div class="contentWrapper">
+        <div class="mainHeader">
+          <div class="demoImg">
+          </div>
+          <div class="demoInfo">
+            <h1>
+              Slider（轮播）
+            </h1>
+            <p>轮播插件，可调整一些配置，懒加载和跳转支持。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mainContent">
+      <div class="contentWrapper">
+        <div class="pjWrapper">
+        </div>
+      </div>
+    </div>
+  <div class="footerWrapper">
+    <div class="contentWrapper">
+      -- Seognil Lab -- LC -- 2017 --
+    </div>
+  </div>
+  </div>
+</body>
+<script id="md" type="text/markdown">
+## DEMO
+
+<div class="demoWrapper">
+  <div class="sliderDemo">
+    <div data-src="http://cdn.akamai.steamstatic.com/steam/apps/241320/ss_8276fd1d4ac916af3a30f237f581a3c63d88f20c.1920x1080.jpg" data-url="http://store.steampowered.com/app/241320/Ittle_Dew/"></div>
+    <div data-src="http://cdn.akamai.steamstatic.com/steam/apps/210970/ss_fabb0939200a1f2bbb40b775c8e07645f21dc44a.1920x1080.jpg" data-url="http://store.steampowered.com/app/210970/The_Witness/"></div>
+    <div data-src="http://cdn.akamai.steamstatic.com/steam/apps/219890/ss_62a1e3085fee312cf6c1025ec89018fa98821d99.1920x1080.jpg" data-url="http://store.steampowered.com/app/219890/Antichamber/"></div>
+  </div>
+</div>
+
+## 用例
+```
+<div class="sliderDemo">
+  <div data-src="http://cdn.akamai.steamstatic.com/steam/apps/241320/ss_8276fd1d4ac916af3a30f237f581a3c63d88f20c.1920x1080.jpg" data-url="http://store.steampowered.com/app/241320/Ittle_Dew/"></div>
+  <div data-src="http://cdn.akamai.steamstatic.com/steam/apps/210970/ss_fabb0939200a1f2bbb40b775c8e07645f21dc44a.1920x1080.jpg" data-url="http://store.steampowered.com/app/210970/The_Witness/"></div>
+  <div data-src="http://cdn.akamai.steamstatic.com/steam/apps/219890/ss_62a1e3085fee312cf6c1025ec89018fa98821d99.1920x1080.jpg" data-url="http://store.steampowered.com/app/219890/Antichamber/"></div>
+</div>
+```
+```
+$(".sliderDemo").iSlider({
+  "dots": true,
+  "transition": "700ms",
+  "delay": "2000ms",
+  "timing": "cubic-bezier(0.5, 0, 0.5, 1)",
+  "next": "right",
+  "dragable": true,
+  "jumper": function (url) {
+    openPage({
+      "url": url
+    })
+  }
+});
+
+function openPage(param) {
+  var urlStr = param.url + "?"
+  for (var key in param.param) {
+    urlStr += key + "=" + param.param[key] + "&"
+  }
+  urlStr = urlStr.substring(0, urlStr.length - 1)
+  window.location.href = urlStr;
+}
+```
+```less
+.sliderDemo {
+	max-width: 640px;
+	.slider-wrapper{
+			padding-bottom: 900%/16;
+		.slider-unit {
+			background-size: cover;
+		}
+	}
+	.dots-container{
+		right: 40px;
+		bottom: 10px;
+		.dots-wrapper{
+			.dots-unit{
+				width: 20px;
+				height: 20px;
+				border-width: 3px;
+			}
+		}
+	}
+}
+```
+
+## 依赖
+
+* jQuery.js
+* slider.js
+* slider.css
+
+
+## 结构
+
+```
+.sliderDemo
+
+  .slider-wrapper
+    .slider-unit
+  .dots-container
+    .dots-wrapper
+      .dots-unit
+
+```
+
+## 参数
+
+|属性|类型|默认值|可选值|说明|
+|:---|:---|:---|:---|:---|:---|
+|delay|String|"3000ms"||自动滚动到下一张的延迟
+|transition|String|"500ms"||滚动渐变时间
+|speed|String|"ease-in-out"||动画速度函数
+|loop|String|"continue"|"continue"&#124;"restart"|最后一张结束后同方向播放到第一张，还是反向滚回第一张
+|next|String|"right"|"left"&#124;"right"|滚动方向
+|dots|Boolen|true||是否有导航原点
+|hover|String|"stop"|"stop"&#124;"continue"|当hover时，暂停轮播或不暂停
+|dragable|Boolen|true||轮播是否允许手指左右拖动
+|scrollable|Boolen|true||拖动时是否允许页面垂直滚动
+|dragRange|String|"50"||拖动死区（只支持像素值），判断重新对齐当前图片还是拖动到下一张
+|jumper|Function|function(url){}||链接跳转，url==获取到的当前图片的跳转地址
+|dragable|Boolen|true||是否可垂直拖动（mobile 性能）|
+
+## 版本
+
+#### 2.0(developing)
+* 增加了太多新功能，计划整体重构
+* 修复一些遗留问题
+
+#### 1.2
+* 增加点击跳转事件
+
+#### 1.1
+* 拦截页面垂直滚动（可选）
+
+#### 1.0
+* 基础轮播
+* 图片懒加载
+* 可点击和拖动
+* 导航圆点
+* 过量拖动保护
+
+</script> 
+
+</html>

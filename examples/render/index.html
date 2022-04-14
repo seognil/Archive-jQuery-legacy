@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Render</title>
+  <!-- <script src="https://cdn.bootcss.com/markdown.js/0.5.0/markdown.min.js"></script> -->
+  <script src="https://cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
+  <link href="https://cdn.bootcss.com/highlight.js/9.10.0/styles/github.min.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/less.min.js"></script> 
+  <link rel="stylesheet" href="pageBlade/demoPage.css">
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/lodash.js/4.17.4/lodash.min.js"></script>
+  <script src="pageBlade/demoPage.js"></script> 
+  <script src="render.js"></script> 
+  <link rel="stylesheet" href="use.css">
+  <script src="use.js"></script> 
+</head>
+
+<body>
+  <div class="mainWrapper">
+    <div class="headerWrapper">
+      <div class="contentWrapper">
+        <div class="mainHeader">
+          <div class="demoImg">
+          </div>
+          <div class="demoInfo">
+            <h1>
+              render（模板函数）
+            </h1>
+            <p>模拟ES6模板字符串，实现单向dom模板，可填充数据和批量渲染。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mainContent">
+      <div class="contentWrapper">
+        <div class="pjWrapper">
+        </div>
+      </div>
+    </div>
+  <div class="footerWrapper">
+    <div class="contentWrapper">
+      -- Seognil Lab -- LC -- 2017 --
+    </div>
+  </div>
+  </div>
+</body>
+<script type="text/template" class="renderTemplate">
+  <div class="list" data-lid="${id}">
+    ${name} - ${id} - ${desc}
+    <button>按钮</button>
+  </div>
+</script>
+<script id="md" type="text/markdown">
+## DEMO
+
+<div class="demoWrapper">
+  <div class="renderDemo">
+    <div class="renderTarget"></div>
+    <div><br>输出：<span class="result"></span></div>
+  </div>
+</div>
+
+## 用例
+```
+<div class="demoWrapper">
+  <div class="renderDemo">
+    <div class="renderTarget"></div>
+    <div><br>输出：<span class="result"></span></div>
+  </div>
+</div>
+
+<script type="text/template" class="renderTemplate">
+    <div class="list" data="${id}">
+      ${name} - ${id} - ${desc}
+      <button>按钮</button>
+    </div>
+/script>
+```
+```
+var Data = [
+  {"name": "数据1", "desc": "描述1", "id": "数据ID1", },
+  {"name": "数据2", "desc": "描述2", "id": "数据ID2", },
+  {"name": "损坏数据11", "id": "数据ID11", },
+  {"name": "损坏数据12", "desc": "描述12", },
+  {},
+]
+var addTempEvent = function ($scope) {
+  $scope.find("button").on("click", function () {
+    $(".result").text("获取到了 " + $scope.data("lid"))
+  })
+}
+Data.forEach(function (obj) {
+  $.renderTemp({
+    data: obj,
+    event: addTempEvent,
+    temp: ".renderTemplate",
+    dest: ".renderTarget",
+  })
+})
+```
+
+## 依赖
+
+* jQuery.js
+* render.js
+
+## 参数
+
+|属性|类型|默认值|示例值|说明|
+|:---|:---|:---|:---|:---|:---|
+|temp|jQuery selector|||模板
+|dest|jQuery selector|||目标
+|data|Object|||数据
+|event|Function||function($scope){}|添加事件，$scope为从模板生成的当前项
+|fill|Boolen|true||是否填充数据
+
+
+## 版本
+
+#### 1.0
+
+* script template技术，正则替换数据，append
+* 空数据保护
+
+</script> 
+
+</html>

@@ -1,0 +1,68 @@
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+.slider-container.grabbing {
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+.slider-container .slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+.slider-container .slider-wrapper .slider-unit {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /*background-position: center;
+  background-size: cover;*/
+  background-size: 100% 100%;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+.slider-container .dots-container {
+  /*font-size: 20px;*/
+  position: absolute;
+  bottom: 0;
+  right: 5%;
+  width: 100%;
+  /*transform: translateX(-50%);*/
+ /* background: hsla(0,0%,0%,0.5);*/
+  width: auto;
+  padding: 0.1rem 0.25rem;
+  border-radius: 0.07rem;
+}
+.slider-container .dots-container .dots-wrapper {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  /*height: 0.25rem;*/
+}
+.slider-container .dots-container .dots-wrapper .dots-unit {
+  display: inline-block;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: 300ms;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.5);
+  border-radius: 100%;
+  background: transparent;
+}
+.slider-container .dots-container .dots-wrapper .dots-unit.on {
+  background: rgba(255, 255, 255, 0.8);
+}
+.slider-container .dots-container .dots-unit,
+.slider-container .dots-container .dots-spy {
+  width: 0.25rem;
+  height: 0.25rem;
+  margin: 0 0.1rem;
+  border-width: 0.05rem;
+}

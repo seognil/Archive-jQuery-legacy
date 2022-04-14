@@ -1,0 +1,161 @@
+
+.iPicker-bgMask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1010;
+  background-color: hsla(0, 0%, 0%, 0.4);
+}
+.iPicker-pickerContainer {
+  &.iPickerToast {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 200px;
+  }
+}
+.iPicker-slotItem {
+  height: 40px;
+  line-height: 40px;
+}
+
+.iPicker-pickerContainer {
+  z-index: 1020;
+  display: flex;
+  flex-direction: column;
+
+  @controlHeight: 44px;
+  @itemHeight: 40px;
+  @grid2: 16px;
+  @white: hsl(0, 0%, 100%);
+  @bgGrey: hsl(0, 0%, 95%);
+  @blue: hsl(210, 80%, 60%);
+  @black: hsl(0 , 0%, 30%);
+  @fsNormal: 14px;
+  @controlFs: @fsNormal;
+  @itemFs: @fsNormal;
+  @maskFrom: hsla(0, 0%, 100%, 0.95);
+  @maskTo: hsla(0, 0%, 100%, 0.6);
+  @borderGrey: hsl(0, 0%, 90%);
+  .iPicker-controlContainer {
+    position: relative;
+    display: flex;
+    height: @controlHeight;
+    flex-direction: row;
+    flex-grow: 0;
+    flex-shrink: 0;
+    justify-content: space-between;
+    background-color: @white;
+    .iPicker-btnCancel,
+    .iPicker-btnConfirm {
+      padding-right: @grid2;
+      padding-left: @grid2;
+      font-size: @controlFs;
+      line-height: @controlHeight;
+      color: @blue;
+      cursor: pointer;
+      user-select: none;
+    }
+    .iPicker-btnConfirm {
+      font-weight: bold;
+    }
+    &:after {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      content: " ";
+      border-top: 1px solid @borderGrey;
+      transform: scaley(0.5);
+      transform-origin: 0 100%;
+    }
+  }
+  .iPicker-rollerContainer {
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    flex-grow: 1;
+    background-color: @bgGrey;
+    .iPicker-slotContainer {
+      position: relative;
+      width: 1px;
+      height: 100%;
+      flex-grow: 1;
+      overflow: hidden;
+      cursor: grab;
+      &:not(:last-child):after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        width: 1px;
+        content: " ";
+        border-right: 1px solid @borderGrey;
+        transform: scaleX(0.5);
+        transform-origin: 100% 0;
+      }
+      .iPicker-slotMask {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        pointer-events: none;
+        background-image: linear-gradient(180deg, @maskFrom, @maskTo), linear-gradient(0deg, @maskFrom, @maskTo);
+        background-repeat: no-repeat;
+        background-position: top, bottom;
+        transform: translate3d(0, 0, 0);
+      }
+      .iPicker-slotIndicator {
+        position: absolute;
+        // top: 50%;
+        z-index: 2;
+        width: 100%;
+        pointer-events: none;
+        // transform: translate3d(0, -50%, 0);
+        &:before,
+        &:after {
+          position: absolute;
+          right: 0;
+          left: 0;
+          height: 1px;
+          content: " ";
+          transform: scaleY(0.5);
+        }
+        &:before {
+          top: 0;
+          border-top: 1px solid @borderGrey;
+          transform-origin: 0 0;
+        }
+        &:after {
+          bottom: 0;
+          border-bottom: 1px solid @borderGrey;
+          transform-origin: 0 100%;
+        }
+      }
+      .iPicker-slotWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        pointer-events: none;
+        user-select: none;
+        .iPicker-slotItem {
+          width: 100%;
+          overflow: hidden;
+          font-size: @itemFs;
+          color: @black;
+          text-align: center;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}

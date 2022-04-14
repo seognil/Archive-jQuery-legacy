@@ -1,0 +1,27 @@
+@themeBlue: hsl(220,70%,50%);
+.throwDemo {
+	height: 300px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	.triggerBtn {
+		height: 36px;
+		padding: 8px 32px;
+		background-color: @themeBlue;
+		color: white;
+		border-radius: 4px;
+		cursor: pointer;
+		user-select: none;
+	}
+	.dest {
+		align-self: flex-end;
+		height: 100px;
+		width: 100px;
+		border-radius: 4px;
+		border: 1px solid @themeBlue;
+		color: @themeBlue;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}

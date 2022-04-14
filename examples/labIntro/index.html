@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Seognil Lab</title>
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="labIntro.css">
+</head>
+
+<body>
+    <div class="mainWrapper">
+        <div class="headerWrapper">
+            <div class="contentWrapper">
+                <div class="mainHeader">
+                    <h1>
+                        Seognil Lab <span class="subText">(beta version)</span>
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <div class="mainContent">
+            <div class="contentWrapper">
+                <ul class="projectWrapper">
+                </ul>
+                <script type="text/template" class="piTemp">
+                    <li class="projectItem">
+                        <a href="${link}">
+                            <div class="piImage">
+                            </div>
+                            <div class="piInfro">
+                                <h3 class="piTitle">${title}</h3>
+                                <div class="piStackWrapper">
+                                </div>
+                                <span class="piDesc">${desc}</span>
+                            </div>
+                        </a>
+                    </li>
+                </script>
+            </div>
+        </div>
+        <div class="footerWrapper">
+            <div class="contentWrapper">
+                -- Seognil Lab -- LC -- 2017 --
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/stats.js/r17/Stats.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/lodash.js/4.17.4/lodash.min.js"></script>
+<script src="labIntro.js"></script>
+<script src="iRender.js"></script>
+
+</html>

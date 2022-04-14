@@ -1,0 +1,29 @@
+@bgGray: hsl(0, 0%, 80%);
+@themeBlue: hsl(220,70%,50%);
+@themeRed: hsl(0,70%,50%);
+.demoList{
+	list-style: none;
+	border: 1px solid @bgGray;
+	padding: 0;
+	.demoItem{
+		color: white;
+		.itemWrapper{
+			width: 100%;
+			height: 4em;
+			background-color: @themeBlue;
+			padding-left: 4em;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			border: 1px solid @bgGray;
+		}
+		.swipeActionRight .panelBtn {
+			width: 100px;
+			height: 100%;
+			background-color: @themeRed;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+}

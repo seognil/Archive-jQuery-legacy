@@ -1,0 +1,25 @@
+@themeBlue: hsl(220,70%,50%);
+.pickerDemo {
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	.triggerWrapper {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		.triggerBtn {
+			height: 36px;
+			padding: 8px 32px;
+			background-color: @themeBlue;
+			color: white;
+			border-radius: 4px;
+			cursor: pointer;
+			user-select: none;
+		}
+	}
+}
+
+.iPicker-pickerContainer.iPickerToast {
+	height: 300px;
+}

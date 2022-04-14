@@ -1,0 +1,18 @@
+.sliderDemo {
+  max-width: 640px;
+}
+.sliderDemo .slider-wrapper {
+  padding-bottom: 56.25%;
+}
+.sliderDemo .slider-wrapper .slider-unit {
+  background-size: cover;
+}
+.sliderDemo .dots-container {
+  right: 40px;
+  bottom: 10px;
+}
+.sliderDemo .dots-container .dots-wrapper .dots-unit {
+  width: 20px;
+  height: 20px;
+  border-width: 3px;
+}

@@ -1,0 +1,53 @@
+@import "global";
+
+.mainHeader {
+    display: flex;
+    flex-direction: row;
+    .demoImg {
+        width: 128px;
+        height: 128px;
+        background-color: @bgGray;
+        margin-right: @gap4;
+    }
+    .demoInfo {
+        flex-grow: 1;
+    }
+}
+
+.rowWrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.pjWrapper {
+    h1,h2,h3,h4 {
+        position: relative;
+        &::after {
+            content: "";
+            display: block;
+            height: 0;
+            border-bottom: 1px solid @bgGray;
+        }
+    }
+    .pjShow {
+        // border: 1px solid @bgGray;
+        // border-radius: 4px;
+        // padding: @gap1;
+    }
+    .pjCode {
+
+    }
+    .pjDepend {
+
+    }
+    .pjConst {
+
+    }
+    .pjParam {
+
+    }
+    .pjNotice {
+
+    }
+}

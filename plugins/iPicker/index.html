@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../cdn/jquery.js" charset="utf-8"></script>
+  <script src="jquery-tap.js" charset="utf-8"></script>
+  <!-- <script src="../../testrange/dt/dt.js" charset="utf-8"></script> -->
+  <link rel="stylesheet" href="picker.v4.css">
+  <!-- <link rel="stylesheet/less" type="text/css" href="picker.less" /> -->
+  <!-- <script src="http://cdn.bootcss.com/less.js/2.5.3/less.min.js?1.0.0"></script> -->
+  <script src="../dt/dt.js" charset="utf-8"></script>
+  <script src="picker.v4.js" charset="utf-8"></script>
+  <style>
+    .clicker {
+      display: flex;
+    }
+
+    .btn {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(241, 72, 78);
+      margin-right: 5px;
+      margin-bottom: 5px;
+      font-size: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="clicker">
+    <div class="btn" id="d1">静态</div>
+    <div class="btn" id="d2">动态</div>
+
+    <!-- <a class="btn" id="d4" href="#/local?c=2">地址</a> -->
+  </div>
+  <div class="clicker">
+    <div class="btn" id="d3">日期</div>
+  </div>
+  <span id="texttarget">输出</span>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus voluptatum, tenetur omnis iste quos rerum dolorum. Magni iure vero eum optio, tempore similique voluptatem vel maxime ea aliquam porro nemo.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus voluptatum, tenetur omnis iste quos rerum dolorum. Magni iure vero eum optio, tempore similique voluptatem vel maxime ea aliquam porro nemo.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus voluptatum, tenetur omnis iste quos rerum dolorum. Magni iure vero eum optio, tempore similique voluptatem vel maxime ea aliquam porro nemo.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus voluptatum, tenetur omnis iste quos rerum dolorum. Magni iure vero eum optio, tempore similique voluptatem vel maxime ea aliquam porro nemo.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus voluptatum, tenetur omnis iste quos rerum dolorum. Magni iure vero eum optio, tempore similique voluptatem vel maxime ea aliquam porro nemo.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus voluptatum, tenetur omnis iste quos rerum dolorum. Magni iure vero eum optio, tempore similique voluptatem vel maxime ea aliquam porro nemo.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus voluptatum, tenetur omnis iste quos rerum dolorum. Magni iure vero eum optio, tempore similique voluptatem vel maxime ea aliquam porro nemo.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus voluptatum, tenetur omnis iste quos rerum dolorum. Magni iure vero eum optio, tempore similique voluptatem vel maxime ea aliquam porro nemo.</p>
+</body>
+<script>
+  (function($) {
+    $(function() {
+      $.getJSON("DivisionCodeSH.v3.json", function(data) {
+        DCSH2 = data
+        // $("#d2").tap()
+      });
+      var s1 = []
+      $("#d1").tap(function() {
+        iPicker({
+          // type: "static",
+          // startWith: window.inputChosen,
+          source: [
+            ["1退换货", "2不满意", "3下挫单", "4延迟发货"],
+            ["1退换货", "2不满意", "3下挫单", "4延迟发货", "5延迟发货", "6延迟发货", "7延迟发货", "11退换货", "12不满意", "13下挫单", "14延迟发货", "15延迟发货", "16延迟发货", "17延迟发货"]
+          ],
+          startWith: s1,
+          callback: function(index, value) {
+            $("#texttarget").html(JSON.stringify(index) + "<br>" + JSON.stringify(value))
+            s1 = index
+          }
+        })
+      })
+      s2 = []
+      $("#d2").tap(function() {
+        iPicker({
+          // type: "dynamic",
+          source: DCSH2,
+          startWith: s2,
+          flex: [1, 1, 2],
+          callback: function(index, value) {
+            $("#texttarget").html(JSON.stringify(index) + "<br>" + JSON.stringify(value))
+            s2 = index
+          }
+        })
+      })
+      var d3 = Date.now()
+      var s3 = []
+      for (var i = 0; i < 7; i++) {
+        var di = new Date(d3 + i * 1000 * 3600 * 24)
+        s3.push(di.getFullYear() + "-" + di.getMonth() + "-" + di.getDate())
+      }
+      $("#d3").tap(function() {
+        iPicker({
+          // type: "dynamic",
+          source: s3,
+          // startWith: s3,
+          // flex: [1, 1, 2],
+          callback: function(index, value) {
+            $("#texttarget").html(JSON.stringify(index) + "<br>" + JSON.stringify(value))
+            // s2 = index
+          }
+        })
+      })
+      // $("#d1").click()
+      // $("#d1").tap()
+
+      // console.log(data)
+      // console.log(settings)
+      // console.log(flag)
+    });
+  })(jQuery);
+</script>
+
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Throw</title>
+  <script src="https://cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
+  <link href="https://cdn.bootcss.com/highlight.js/9.10.0/styles/github.min.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/less.min.js"></script> 
+  <link rel="stylesheet" href="pageBlade/demoPage.css">
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/lodash.js/4.17.4/lodash.min.js"></script>
+  <script src="pageBlade/demoPage.js"></script> 
+  <script src="throw.js"></script> 
+  <link rel="stylesheet" href="use.css">
+  <script src="use.js"></script> 
+</head>
+
+<body>
+  <div class="mainWrapper">
+    <div class="headerWrapper">
+      <div class="contentWrapper">
+        <div class="mainHeader">
+          <div class="demoImg">
+          </div>
+          <div class="demoInfo">
+            <h1>
+              Throw（抛物线）
+            </h1>
+            <p>模拟淘宝加入购物车抛物线动画。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mainContent">
+      <div class="contentWrapper">
+        <div class="pjWrapper">
+        </div>
+      </div>
+    </div>
+  <div class="footerWrapper">
+    <div class="contentWrapper">
+      -- Seognil Lab -- LC -- 2017 --
+    </div>
+  </div>
+  </div>
+</body>
+<script id="md" type="text/markdown">
+## DEMO
+
+<div class="demoWrapper">
+  <div class="throwDemo">
+    <div class="triggerBtn">点击</div>
+    <div class="dest"><span>目的地</span></div>
+  </div>
+</div>
+
+## 用例
+```
+<div class="throwDemo">
+  <div class="triggerBtn">点击</div>
+  <div class="dest"><span>目的地</span></div>
+</div>
+```
+```
+$(".triggerBtn").on("click", function () {
+  var $this = $(this)
+  iThrow({
+    thing: $this,
+    from: $this,
+    to: ".dest",
+    duration: 500,
+    size: "50%",
+    angel: "2"
+  })
+})
+```
+```less
+@themeBlue: hsl(220,70%,50%);
+.throwDemo {
+	height: 300px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	.triggerBtn {
+		height: 36px;
+		padding: 8px 32px;
+		background-color: @themeBlue;
+		color: white;
+		border-radius: 4px;
+		cursor: pointer;
+		user-select: none;
+	}
+	.dest {
+		align-self: flex-end;
+		height: 100px;
+		width: 100px;
+		border-radius: 4px;
+		border: 1px solid @themeBlue;
+		color: @themeBlue;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+```
+
+## 依赖
+
+* jQuery.js
+* throw.js
+
+## 结构
+
+```
+.throwThing
+```
+
+## 参数
+
+|属性|类型|默认值|示例值|说明|
+|:---|:---|:---|:---|:---|:---|
+|thing|jQuery selector|||要克隆的元素
+|from|jQuery selector|||起始点（元素中心）
+|to|jQuery selector|||结束点（元素中心）
+|duration|Number|300||毫秒数（将转换成帧数）
+|angel|Number|1||角度（系数，并不是真实的角度）
+|size|String|"100%"|0.5&#124;50%&#124;100px|克隆的尺寸，两个值表示长度和宽度，如 "50% 30%"
+|opacity|String|"1 0.3"||透明度，两个值表示开始和结束
+
+
+## 版本
+
+#### 1.3(developing)
+* 修改抛物线算法（角度）
+
+#### 1.2
+* 完全克隆样式
+* 使用scale重构缩放（之前是width height）
+
+#### 1.1
+* 使用requestAnimationFrame重构
+
+#### 1.0
+* 点击 抛 从起点到终点
+* 角度系数
+* 尺寸和透明度
+
+</script> 
+
+</html>

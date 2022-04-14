@@ -1,0 +1,43 @@
+.throwDemo {
+  height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.throwDemo .triggerBtn {
+  height: 36px;
+  padding: 8px 32px;
+  background-color: #2662d9;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.throwDemo .dest {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  height: 100px;
+  width: 100px;
+  border-radius: 4px;
+  border: 1px solid #2662d9;
+  color: #2662d9;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
