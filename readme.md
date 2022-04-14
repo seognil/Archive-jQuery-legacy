@@ -1,6 +1,6 @@
 # Some Of My Legacy jQuery Code
 
-Live: https://seognil.github.io/Demo-jQuery-legacy/examples/labIntro/
+Live: https://seognil.github.io/Archive-jQuery-legacy/examples/labIntro/
 
 ## About
 
